@@ -29,7 +29,7 @@ Use Graph to pull user information including: Name, Email, Department, Job title
 
 ** *Ideas and improvements:* **
 
-*Add switch -includeAll to get all information from user, not just what is provided above.*
+~~*Add switch -includeAll to get all information from user, not just what is provided above.*~~ **DONE!**
 
 *add -includeManager switch for more information on manager.*
 

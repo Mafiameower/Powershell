@@ -8,12 +8,9 @@
     $user = Get-MgUser -All -property * | Where-Object { $_.Mail -like "*$username*" } 
 #Pull some info. Only details left is manager.
     $UserInfo = $user | select-object DisplayName, Mail, JobTitle, Department, Id
-#Extract UserID for easier manipulation and output. Extract Displayname for output.
-    $userID = $user | select-object -ExpandProperty Id
-    $Displayname = $userinfo.DisplayName
 #Manager Block:
 #Get Manager Id
-    $userManagerID = Get-MgUserManager -UserId $userID | select-object -expandproperty Id
+    $userManagerID = Get-MgUserManager -UserId $user.id | select-object -expandproperty Id
 #Get Manager info
     $userManager = get-mguser -UserId $userManagerID | select-object Displayname, Mail, JobTitle, Department, Id
 ####################
@@ -24,7 +21,10 @@
     else {Clear-Host}
 
     if ($includeAll) {
-        $User | select-object *}
+        "User Info"
+        $User | select-object *
+        "Manager Info:"
+        $userManager }
     else {
     ''
     "User info:" 
@@ -45,7 +45,6 @@ param(
 $user = Get-MgUser -All -property * | Where-Object { $_.Mail -like "*$username*" } 
 $userManagerID = Get-MgUser -All -property * | Where-Object { $_.Mail -like "*$NewManager*" } | Select-Object -ExpandProperty Id
 $UserManagerDisplayName = Get-MgUser -All -property * | Where-Object { $_.Mail -like "*$NewManager*" } | Select-Object -ExpandProperty DisplayName
-#==#==#==#==#==#==#==#==#==#==#==#==#==#==#==#==#==#==#==#==#==#==#==#==#==#==#==#==#==#==
 #set manager for command
 $NewManagerBodyParameter = @{
     "@odata.id"="https://graph.microsoft.com/v1.0/users/$userManagerID"
