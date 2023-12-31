@@ -1,8 +1,7 @@
 # Powershell_Modules
 Workshop space for powershell modules
 
-
-# Current Module goals:
+# Current functions created
 
 ### Get-User-Info 
 Use Graph to pull user information including: Name, Email, Department, Job title, manager and Id(Graph)
@@ -29,14 +28,18 @@ Use Graph to pull user information including: Name, Email, Department, Job title
 
 ** *Ideas and improvements:* **
 
+
 ~~*Add switch -includeAll to get all information from user, not just what is provided above.*~~ **DONE!**
 
 *add -includeManager switch for more information on manager.*
 
-
 ### Update-MgManager
 Use graph to update manager by simply entering username and manager username.
 
-
 ### Get-Email-User-List
 Use Graph to get list of users in an Email. Working to ensure this encompasses all Email type options.
+
+# Current Modules to create:
+
+### New-MgUserCreation
+help assist in user creation, might not be needed. Have not investigated yet.(12/31(30))

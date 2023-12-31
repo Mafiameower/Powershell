@@ -1,4 +1,6 @@
-﻿Function Get-mgUserInfo() {
+﻿Import-Module -Name Microsoft.Graph.Users -ErrorAction Stop
+
+Function Get-mgUserInfo() {
     param([string]$username, [switch]$noCLS, [switch]$includeAll, [string]$includeAllManager)
 <#
     The purpose of this function is to get user information using Graph. This will also provide manager information.
@@ -36,6 +38,7 @@
 
 #Update manager using Update-MgManager -Username john.Smith -NewManager Patty.Jones
 function Update-MgManager() {
+
 #require $Username and $NewManager as input.
 param(
     [Parameter(Mandatory)]
