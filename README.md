@@ -43,14 +43,15 @@ Use Graph to get list of users in an Email. Working to ensure this encompasses a
 # Current Modules to create:
 
 ### New-MgUserCreation
-help assist in user creation, might not be needed. Have not investigated yet.(12/31(30))
+Help assist in user creation, might not be needed. Have not investigated yet.(12/31(30))
 
 
 ## Added Invoke_mg_User.ps1
-###  This utilizes Invoke-MgRequest instead of using get-mguser/update-mgUser. Add more info later.
+This utilizes Invoke-MgRequest instead of using get-mguser/update-mgUser. Add more info later.
 
 
-##  Added 12-29.ps1. Will likely remove soon.
+### Added 12-29.ps1. Will likely remove soon.
+### Added Password_Generator.ps1
 
 
 
