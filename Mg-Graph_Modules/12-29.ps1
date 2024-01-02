@@ -1,5 +1,4 @@
-﻿Import-Module -Name Microsoft.Graph.Users -ErrorAction Stop
-Function Get-mgUserInfo() {
+﻿Function Get-mgUserInfo() {
     param([string]$username, [switch]$noCLS, [switch]$includeAll, [string]$includeAllManager)
     <#
     The purpose of this function is to get user information using Graph. This will also provide manager information.
@@ -23,10 +22,7 @@ Function Get-mgUserInfo() {
     else { Clear-Host }
 
     if ($includeAll) {
-        "User Info"
         $User | select-object *
-        "Manager Info:"
-        $userManager 
     }
     else {
         ''
@@ -40,7 +36,6 @@ Function Get-mgUserInfo() {
 
 #Update manager using Update-MgManager -Username john.Smith -NewManager Patty.Jones
 function Update-MgManager() {
-
     #require $Username and $NewManager as input.
     param(
         [Parameter(Mandatory)]
@@ -50,6 +45,7 @@ function Update-MgManager() {
     $user = Get-MgUser -All -property * | Where-Object { $_.Mail -like "*$username*" } 
     $userManagerID = Get-MgUser -All -property * | Where-Object { $_.Mail -like "*$NewManager*" } | Select-Object -ExpandProperty Id
     $UserManagerDisplayName = Get-MgUser -All -property * | Where-Object { $_.Mail -like "*$NewManager*" } | Select-Object -ExpandProperty DisplayName
+    #==#==#==#==#==#==#==#==#==#==#==#==#==#==#==#==#==#==#==#==#==#==#==#==#==#==#==#==#==#==
     #set manager for command
     $NewManagerBodyParameter = @{
         "@odata.id" = "https://graph.microsoft.com/v1.0/users/$userManagerID"

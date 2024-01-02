@@ -4,7 +4,7 @@ Workshop space for powershell modules
 # Current functions created
 
 ### Get-User-Info 
-Use Graph to pull user information including: Name, Email, Department, Job title, manager and Id(Graph)
+Use Graph(Get-MgUser) to pull user information including: Name, Email, Department, Job title, manager and Id(Graph)
 
 **Sample input:**
 
@@ -31,10 +31,11 @@ Use Graph to pull user information including: Name, Email, Department, Job title
 
 ~~*Add switch -includeAll to get all information from user, not just what is provided above.*~~ **DONE!**
 
-*add -includeManager switch for more information on manager.*
+*add -includeManager switch for more information on manager.* 
+    Maybe can use -No manager instead.
 
 ### Update-MgManager
-Use graph to update manager by simply entering username and manager username.
+Use graph(Update-MgUserManager) to update manager by simply entering username and manager username.
 
 ### Get-Email-User-List
 Use Graph to get list of users in an Email. Working to ensure this encompasses all Email type options.
@@ -43,3 +44,15 @@ Use Graph to get list of users in an Email. Working to ensure this encompasses a
 
 ### New-MgUserCreation
 help assist in user creation, might not be needed. Have not investigated yet.(12/31(30))
+
+
+## Added Invoke_mg_User.ps1
+###  This utilizes Invoke-MgRequest instead of using get-mguser/update-mgUser. Add more info later.
+
+
+##  Added 12-29.ps1. Will likely remove soon.
+
+
+
+# Further projects:
+*Create a csv based user update script using invoke-mgGraph and PATCH API calls.*
