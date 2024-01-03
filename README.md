@@ -108,5 +108,7 @@ This utilizes Invoke-MgRequest instead of using get-mguser/update-mgUser. Add mo
 
 # Further projects:
 *Create a csv based user update script using invoke-mgGraph and PATCH API calls.*
+
 *Update UpdateUserTitleManagerfromCSV V2.ps1 - Have this contain parameter for Company name. Add as Variable.*
+
 *Same for scratch user and Email domain.*
