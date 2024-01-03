@@ -91,24 +91,31 @@ Use graph(Update-MgUserManager) to update manager by simply entering username an
 ### Get-Email-User-List
 Use Graph to get list of users in an Email. Working to ensure this encompasses all Email type options.
 
-# Current Modules to create:
-
-### New-MgUserCreation
-Help assist in user creation, might not be needed. Have not investigated yet.(12/31(30))
-
-
-## Added Invoke_mg_User.ps1
-This utilizes Invoke-MgRequest instead of using get-mguser/update-mgUser. Add more info later.
-
-
-### Added 12-29.ps1. Will likely remove soon.
-### Added Password_Generator.ps1
-
 
 
 # Further projects:
+
+### New-MgUserCreation
+
+Help assist in user creation, might not be needed. Have not investigated yet.(12/31(30))
+
+<br>
+<br>
+
+#### **Light to-do's:**
+
 *Create a csv based user update script using invoke-mgGraph and PATCH API calls.*
 
 *Update UpdateUserTitleManagerfromCSV V2.ps1 - Have this contain parameter for Company name. Add as Variable.*
 
 *Same for scratch user and Email domain.*
+
+
+
+
+Ignore:
+
+    Added 12-29.ps1. Will likely remove soon.
+    Added Password_Generator.ps1
+    Added Invoke_mg_User.ps1
+    This utilizes Invoke-MgRequest instead of using get-mguser/update-mgUser. Add more info later.
