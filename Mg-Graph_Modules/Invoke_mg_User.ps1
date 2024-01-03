@@ -1,11 +1,32 @@
+<#Requires Powsershell 7.0(?)+#>
+function Connect-Now() {
+    $token = Read-Host "Please provide Access Token" -AsSecureString
+    Write-Host ...Connecting to Graph...
+    Connect-MgGraph -AccessToken $token
+    Get-MgContext
+
+}
+
 function Get-MgUser-Invoke() {
-    param([string]$mail, [string]$customParameter, [switch]$nocls, [switch]$less)
+    param([string]$Mail, [string]$DisplayName, [string]$CustomParameter, [switch]$nocls, [switch]$less, [string]$find)
     #Get UserID for user
-    $userID = invoke-mggraphrequest -method GET  -Uri "/v1.0/users?`$filter=mail eq '$mail'" | Select-Object -ExpandProperty value | Select-Object -ExpandProperty id
+    if ($Mail) {
+        $user = invoke-mggraphrequest -method GET -Uri "/v1.0/users?`$filter=mail eq '$Mail'" 
+        $userID = $user.value.id
+    }
+    if ($DisplayName) {
+        $user = invoke-mggraphrequest -method GET -Uri "/v1.0/users?`$filter=startsWith(displayName,'$displayName')" 
+        $userID = $user.value.id
+    }
+    if ($find) {
+        $userList = invoke-mggraphrequest -method GET -Uri "/v1.0/users?`$filter=startsWith(displayName,'$find')?`$select=displayName, mail, id"
+        $userList = $userList.value | Select-Object displayName, mail, id
+        return $userList
+    }
     #Set Manager Info
-    $managerInfo = invoke-mggraphrequest -method GET  -Uri "/v1.0/users/{$userID}/manager?`$select=displayName,mail,id,employeeid" `
-    | Select-Object displayName, mail, Id, employeeID `
-    | format-list displayName, mail, Id, employeeID
+    $managerID = invoke-mggraphrequest -method GET  -Uri "/v1.0/users/{$userID}/manager?`$select=id" | Select-Object -ExpandProperty Id
+    $managerInfo = invoke-mggraphrequest -method GET  -Uri "/v1.0/users/{$managerID}?`$select=displayName,mail,jobTitle,department,id,employeeid" `
+    | Select-Object displayName, mail, jobTitle, department, employeeid, Id | Format-List
     #select portion of Employee
 
     #Currently in beta mode. Can only use one parameter at this time.

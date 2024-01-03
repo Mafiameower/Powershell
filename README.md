@@ -56,9 +56,11 @@ Use Graph(Get-MgUser) to pull user information including: Name, Email, Departmen
 ### Get-MgUser-Invoke
 Use Graph(Invoke-MgGraphRequest) to GET user information including: Name, Email, Department, Job title, manager and Id(Graph)
 
-**Sample Input:**
+**Sample Input using -Mail:**
 
-    Get-MgUser-Invoke -mail $John.Smith@Company.com
+    Get-MgUser-Invoke -mail John.Smith@Company.com
+
+*Must contain entire Email for this to work correctly.*
 
 **Sample Output:**
 
@@ -79,9 +81,24 @@ Use Graph(Invoke-MgGraphRequest) to GET user information including: Name, Email,
     employeeID  : 2
 
 
+**Sample Input using -find:**
+
+    get-mguser-invoke -find john
+
+*Uses 'startsWith' filter parameter to locate users using displayname. Must begin with first name, as displayName cannot be filtered using 'contains' parameter*
+
+**Sample Output:**
+
+    displayName      mail                                    id
+    -----------      ----                                    --
+    John Smith       John.Smith@Company.com                  xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+    John Doe         john.doe@Company.com                    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+    John Johnson     john.Johnson@Company.com               xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+
 ***Ideas and improvements:***
 
-*Add different search parameters instead of only Mail*
+*Add different search parameters instead of only Mail*~~
+    ~~*Display name -like*~~ *Added -find parameter*
 
 *Fix -CustomParameters for result returns -- See issues*
 
@@ -102,9 +119,17 @@ Help assist in user creation, might not be needed. Have not investigated yet.(12
 <br>
 <br>
 
+#### ~~Find User script using MG Graph. Use to find a list of users with same name so you can get the correct users info.~~
+
+-See -find under Get-MgUser-Invoke.
+
+
 #### **Light to-do's:**
 
-*Create a csv based user update script using invoke-mgGraph and PATCH API calls.*
+~~*Create a csv based user update script using invoke-mgGraph and PATCH API calls.*~~
+- Finished, would like to fully flesh this out to allow more than one parameter to be updated at a time. Should be an easy update.
+- Need to add parameter for CSV file location
+- Need to add logging file and log file parameter.
 
 *Update UpdateUserTitleManagerfromCSV V2.ps1 - Have this contain parameter for Company name. Add as Variable.*
 
