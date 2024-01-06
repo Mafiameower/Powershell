@@ -127,9 +127,9 @@ Help assist in user creation, might not be needed. Have not investigated yet.(12
 #### **Light to-do's:**
 
 ~~*Create a csv based user update script using invoke-mgGraph and PATCH API calls.*~~
-- Finished, would like to fully flesh this out to allow more than one parameter to be updated at a time. Should be an easy update.
-- Need to add parameter for CSV file location
-- Need to add logging file and log file parameter.
+- ~~Finished, would like to fully flesh this out to allow more than one parameter to be updated at a time. Should be an easy update.~~ **DONE!**
+- ~~Need to add parameter for CSV file location~~ **DONE!**
+- ~~Need to add logging file and log file parameter.~~ **DONE!**
 
 *Update UpdateUserTitleManagerfromCSV V2.ps1 - Have this contain parameter for Company name. Add as Variable.*
 
