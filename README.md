@@ -22,12 +22,12 @@ If there are specific functions that you frequently use, we recommend copying th
 
 ## Current functions created
 
-### Get-MgUser-Invoke
+### Get-QMgUser
 Use Graph(Invoke-MgGraphRequest) to GET user information including: Name, Email, Department, Job title, manager and Id(Graph)
 
 **Sample Input using -Mail:**
 ````powershell
-Get-MgUser-Invoke -mail John.Smith@Company.com
+Get-QMgUser -mail John.Smith@Company.com
 ````
 *Must contain entire Email for this to work correctly.*
 
@@ -52,7 +52,7 @@ Get-MgUser-Invoke -mail John.Smith@Company.com
 **Sample input using -Find:**
 
 ````powershell
-get-mguser-invoke -Find John
+Get-QMgUser -Find John
 ````
 *Uses 'startsWith' filter parameter to locate users using displayname. Must begin with first name, as displayName cannot be filtered using 'contains' parameter*
 
@@ -121,7 +121,7 @@ Help assist in user creation, might not be needed. Have not investigated yet.(12
 
 #### ~~Find User script using MG Graph. Use to find a list of users with same name so you can get the correct users info.~~
 
--See -find under Get-MgUser-Invoke.
+-See -find under Get-QMgUser.
 
 
 #### **Light to-do's:**

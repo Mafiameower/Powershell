@@ -54,7 +54,7 @@ function Get-MgUser-Invoke() {
     }
 }
 
-function Update-MgUser-Invoke() {
+function Update-QMgUser() {
     param(
         [Parameter(Mandatory, Position = 0)][string]$Mail,
         [Parameter(Mandatory, Position = 1)][string][string]$Parameter,
@@ -130,7 +130,7 @@ function Update-Users-Invoke-WithCSV() {
             $mail = $user.Mail
             $paramater = $user.parameter
             $value = $user.Value
-            Update-MgUser-Invoke -mail $mail -parameter $paramater -newValue $value
+            Update-QMgUser -mail $mail -parameter $paramater -newValue $value
             Write-Host "$mail has had the parameter $paramater updated to $value" >>  $outFile
         }
     }
@@ -141,7 +141,7 @@ function Update-Users-Invoke-WithCSV() {
             $value = $user.Value
             $parameter2 = $user.parameter2
             $value2 = $user.Value2
-            Update-MgUser-Invoke -mail $mail -parameter $paramater -newValue $value `
+            Update-QMgUser -mail $mail -parameter $paramater -newValue $value `
                 -Parameter2 $parameter2 -newValue2 $value2
             Write-Host "$mail has had the parameter $paramater updated to $value" >>  $outFile
             Write-Host "$mail has had the parameter $paramater2 updated to $value2" >>  $outFile
@@ -156,7 +156,7 @@ function Update-Users-Invoke-WithCSV() {
             $value2 = $user.Value2
             $parameter3 = $user.parameter3
             $value3 = $user.Value3
-            Update-MgUser-Invoke -mail $mail -parameter $paramater -newValue $value `
+            Update-QMgUser -mail $mail -parameter $paramater -newValue $value `
                 -Parameter2 $parameter2 -newValue2 $value2 `
                 -Parameter3 $parameter3 -newValue3 $value3
             Write-Host "$mail has had the parameter $paramater updated to $value" >>  $outFile
@@ -175,7 +175,7 @@ function Update-Users-Invoke-WithCSV() {
             $value3 = $user.Value3
             $parameter4 = $user.parameter4
             $value4 = $user.Value4
-            Update-MgUser-Invoke -mail $mail -parameter $paramater -newValue $value `
+            Update-QMgUser -mail $mail -parameter $paramater -newValue $value `
                 -Parameter2 $parameter2 -newValue2 $value2 `
                 -Parameter3 $parameter3 -newValue3 $value3 `
                 -Parameter4 $parameter4 -newValue4 $value4
