@@ -1,25 +1,22 @@
-# Powershell
-Workshop space for powershell.
+# Description
 
-## How to use
+The reason that this repository was created is I found while using ````Get-MgUser```` & ````Update-MgUser ````, I ran into certain data points that I could not gather or update. To mitigate this, I began using Invoke-MgGraphRequest. I wanted to be able to share these methods with colleagues and here we are. Soon enough, it more than anything became a learning experience on how to create PowerShell functions and modules and get it published. Crazy how easy it is to just get a package up on PSGallery.
 
-The ultimate plan will be to create modules.
-To utilize the functionality, you can execute the .ps1 file using a PowerShell window. Follow the steps below:
+Here is PSGallery Link: https://www.powershellgallery.com/packages/Q-InvokeMg
 
-1. Start by downloading the .ps1 file.
-1. Open a PowerShell window and navigate to the directory where the file is located (e.g., cd C:\temp).
-1. Execute the file using the following command :
+# How to use
 
-    .\Invoke_mg_user.ps1
-
-Once executed, you will be able to utilize the functions within the .ps1 file. However, please note that you will need to repeat these steps every time you open a new PowerShell window.
-
-If there are specific functions that you frequently use, we recommend copying those functions into your $profile location. This will allow you to easily access them without needing to repeat the aforementioned steps.
-
-
-**The first module has been created. I will provide detailed instructions on how to get this set up on your system ASAP.**
-
-
+This can be downloaded directly from powershell using the following command
+````Powershell
+Install-Module -Name Q-InvokeMg
+````
+This includes four functions that require the Microsoft.Graph Module.
+````Powershell
+Connect-Now
+Get-QMgUser
+Update-QMgUser
+Update-QMgUserCSV
+````
 ## Current functions created
 
 ### Get-QMgUser
@@ -62,14 +59,19 @@ Get-QMgUser -Find John
     -----------      ----                                    --
     John Smith       John.Smith@Company.com                  xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
     John Doe         john.doe@Company.com                    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-    John Johnson     john.Johnson@Company.com               xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+    John Johnson     john.Johnson@Company.com                xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 
-***Ideas and improvements:***
+___
 
-*Add different search parameters instead of only Mail*~~
-    ~~*Display name -like*~~ *Added -find parameter*
+### Connect-Now
+___
 
-*Fix -CustomParameters for result returns -- See issues*
+### Update-QMgUser
+___
+
+### Update-QMgUserCSV
+
+___
 
 ### Update-MgManager
 Use graph(Update-MgUserManager) to update manager by simply entering username and manager username.
@@ -99,59 +101,3 @@ Get-User-Info -Username John.Smith
     JobTitle    : Manager
     Department  : IT
     Id          : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-
-
-***Ideas and improvements:***
-
-
-~~*Add switch -includeAll to get all information from user, not just what is provided above.*~~ **DONE!**
-
-*add -includeManager switch for more information on manager.* 
-    Maybe can use -No manager instead.
-
-
-# Further projects:
-
-### New-MgUserCreation
-
-Help assist in user creation, might not be needed. Have not investigated yet.(12/31(30))
-
-<br>
-<br>
-
-#### ~~Find User script using MG Graph. Use to find a list of users with same name so you can get the correct users info.~~
-
--See -find under Get-QMgUser.
-
-
-#### **Light to-do's:**
-
-*WARNING: Some imported command names contain one or more of the following restricted characters: # , ( ) {{ }} [ ] & - / \ $ ^ ; : " ' < > | ? @ ` * % + = ~*
-*create commands to correct this*
-
-*Write an import script that will copy module to all module folders.*
-
-*Add details about all functions in readme.md*
-
-````powershell
-$env:psmodulepath -split ';'
-````
-
-~~*Create a csv based user update script using invoke-mgGraph and PATCH API calls.*~~
-- ~~Finished, would like to fully flesh this out to allow more than one parameter to be updated at a time. Should be an easy update.~~ **DONE!**
-- ~~Need to add parameter for CSV file location~~ **DONE!**
-- ~~Need to add logging file and log file parameter.~~ **DONE!**
-
-*Update UpdateUserTitleManagerfromCSV V2.ps1 - Have this contain parameter for Company name. Add as Variable.*
-
-*Same for scratch user and Email domain.*
-
-
-
-
-Ignore:
-
-    Added 12-29.ps1. Will likely remove soon.
-    Added Password_Generator.ps1
-    Added Invoke_mg_User.ps1
-    This utilizes Invoke-MgRequest instead of using get-mguser/update-mgUser. Add more info later.

@@ -10,8 +10,7 @@
   This will be the access token provided by Mg Graph. You can get one from Mg Graph Explorer.
 
  .Example
-   # Once you call this command, it will prompt for an access Token. Once submitted, it will connect and
-   # provide connection details.
+   # Once you call this command, it will prompt for an access Token. Once submitted, it will connect and provide connection details.
    Connect-Now
 #>
 function Connect-Now() {
